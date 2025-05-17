@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 const UserTable = lazy(() => import("./pages/UserTable"));
 // const TutorDashboard = lazy(() => import("./pages/TutorDashboard"));
 // @ts-ignore
-const Landing = lazy(() => import("./pages/landing"));
+const Landing = lazy(() => import("./pages/Landing"));
 const CourseManagement = lazy(() => import("./pages/CourseManagement"));
 const RoleManagement = lazy(() => import("./pages/RoleTable"));
 const PromotionManagement = lazy(() => import("./pages/PromotionTable"));
