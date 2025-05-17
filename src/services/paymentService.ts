@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api';
-
 // ฟังก์ชันสำหรับการชำระเงินด้วยบัตรเครดิตผ่าน Omise
 export const createCreditCardCharge = async (
   token: string,
@@ -13,7 +11,7 @@ export const createCreditCardCharge = async (
 ) => {
   try {
     const response = await axios.post(
-      `${API_URL}/payment/charge`,
+      `${import.meta.env.VITE_API_URL}/payment/charge`,
       {
         token,
         amount,
@@ -46,7 +44,7 @@ export const createCheckoutSession = async (
 ) => {
   try {
     const response = await axios.post(
-      `${API_URL}/payment/checkout-session`,
+      `${import.meta.env.VITE_API_URL}/payment/checkout-session`,
       {
         amount,
         courseIds,
@@ -72,7 +70,7 @@ export const createCheckoutSession = async (
 export const checkPaymentStatus = async (paymentId: string) => {
   try {
     const response = await axios.get(
-      `${API_URL}/payment/status/${paymentId}`,
+      `${import.meta.env.VITE_API_URL}/payment/status/${paymentId}`,
       {
         headers: {
           'Authorization': `Bearer ${sessionStorage.getItem('token')?.replace(/"/g, '')}`
@@ -89,7 +87,7 @@ export const checkPaymentStatus = async (paymentId: string) => {
 export const getPaymentHistory = async () => {
   try {
     const response = await axios.get(
-      `${API_URL}/payment/history`,
+      `${import.meta.env.VITE_API_URL}/payment/history`,
       {
         headers: {
           'Authorization': `Bearer ${sessionStorage.getItem('token')?.replace(/"/g, '')}`
