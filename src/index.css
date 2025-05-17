@@ -1,0 +1,104 @@
+@font-face {
+    font-family: "Mitr";
+    src: url("./assets/fonts/Mitr/Mitr-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Mitr";
+    src: url("./assets/fonts/Mitr/Mitr-SemiBold.ttf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Mitr";
+    src: url("./assets/fonts/Mitr/Mitr-Bold.ttf");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("./assets/fonts/Poppins/Poppins-Regular.ttf");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("./assets/fonts/Poppins/Poppins-Medium.ttf");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("./assets/fonts/Poppins/Poppins-SemiBold.ttf");
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("./assets/fonts/Poppins/Poppins-Bold.ttf");
+    font-weight: 700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Mitr", sans-serif;
+}
+
+:lang(th) {
+    font-family: "Mitr", sans-serif;
+}
+
+/* :lang(en) {
+    font-family: "Poppins", sans-serif;
+} */
+
+html {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    max-width: 1600px;
+    min-height: 100vh;
+    flex: 1;
+}
+
+a {
+    color: #433C50;
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 4px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    width: 5px;
+    border-radius: 5px;
+}
+
+img {
+    user-select: none;
+    pointer-events: none;
+}
+
+i {
+    user-select: none;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

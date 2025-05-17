@@ -1,0 +1,127 @@
+.main-section-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-section, .add-new-section {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    border-radius: 5px;
+    transition: 0.3s all;
+    border: 1px solid #b7b6b6;
+    background-color: #FFFFFF;
+}
+
+.add-new-section {
+    width: auto;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+}
+
+.section-card-manage {
+    display: flex;
+    justify-content: center;
+}
+
+.drag-section {
+    cursor: grab;
+    color: #525252;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+
+.drag-section:active {
+    cursor: grabbing;
+}
+
+.section-card {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 1px 1px #dbdada05;
+    background-color: #FFFFFF;
+    border: 1px solid #dbdbdb;
+
+    .header-section-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .title-section-input {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .title-section-input label {
+        font-size: 0.8rem;
+    }
+
+    .title-section-input input {
+        border: none;
+        outline: none;
+        width: 400px;
+        padding: 2px 5px;
+        font-size: 0.85rem;
+        border-bottom: 1px solid #adadad;
+    }
+
+    .delete-section-btn {
+        border: none;
+        background-color: transparent;
+    }
+
+    .search-sub-lesson .ant-select-selector {
+        font-size: 0.7rem;
+        height: 30px;
+    }
+
+    .section-lesson-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .sub-lesson-manage {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .drag-lesson {
+            cursor: grab;
+            color: #9a9999;
+        }
+
+        .drag-lesson:active {
+            cursor: grabbing;
+        }
+
+        .sub-lesson-card {
+            color: #646363;
+            padding: 0 13px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            border: 1px solid #c9c9c9;
+
+            span {
+                font-family: "Mitr", sans-serif;
+                user-select: none;
+            }
+        }
+
+        .remove-attach {
+            border: none;
+            color: #525252;
+            background-color: transparent;
+        }
+    }
+}

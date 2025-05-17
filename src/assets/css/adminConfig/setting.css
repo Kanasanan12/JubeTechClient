@@ -1,0 +1,43 @@
+.user-form-container {
+    padding: 10px;
+}
+
+.user-form-container .breadcrumb {
+    padding-top: 15px;
+}
+
+.role-form-container {
+    padding: 10px;
+}
+
+.role-form-container .breadcrumb {
+    padding-top: 15px;
+} 
+
+.promotion-from-container {
+    padding: 10px;
+}
+
+.promotion-from-container .breadcrumb {
+    padding-top: 15px;
+}
+
+.dashboard-form-container {
+    padding: 10px;
+}
+
+.dashboard_title {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* เพิ่มระยะห่างระหว่างไอคอนกับข้อความ */
+  }
+
+  .dashboard_icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }

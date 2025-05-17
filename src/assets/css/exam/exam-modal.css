@@ -1,0 +1,148 @@
+.create-exam-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0000009c;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s all;
+}
+
+.create-exam-modal.active-modal {
+    opacity: 1;
+    pointer-events: all;
+    transition: 0.3s all;
+}
+
+.create-exam-modal * {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.create-exam-content {
+    padding: 40px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    transform: scale(0.3);
+    pointer-events: none;
+    transition: 0.3s all;
+}
+
+.create-exam-content.active-modal {
+    transform: scale(1);
+    pointer-events: all;
+    transition: 0.3s all;
+}
+
+.exam-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.exam-modal-header button {
+    border: none;
+    background-color: transparent;
+}
+
+.exam-modal-header p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.create-exam-content span {
+    font-size: 0.9rem;
+    color: #6c6c6c;
+}
+
+.exam-modal-body form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.exam-modal-body button {
+    margin-top: 20px;
+    display: flex;
+    font-size: 0.8rem;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+    padding: 6px 12px;
+    border: none;
+    color: #FFFFFF;
+    border-radius: 5px;
+    background-color: #b148f7;
+    transition: 0.3s all;
+}
+
+.exam-modal-body button:hover {
+    background-color: #9915f2;
+    transition: 0.3s all;
+}
+
+.manual-input {
+    min-width: 200px;
+    position: relative;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.manual-input label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.manual-input input, .manual-input textarea {
+    padding: 10px;
+    font-size: 0.85rem;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #cacaca;
+}
+
+.manual-input textarea {
+    height: 170px;
+    resize: none;
+}
+
+.manual-input input::placeholder, .manual-input textarea::placeholder {
+    font-size: 0.8rem;
+}
+
+.manual-input input {
+    height: 40px;
+}
+
+.manual-input span {
+    font-size: 0.75rem;
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+}
+
+.check-random {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.check-random input {
+    width: 15px;
+    height: 15px;
+    accent-color: #ce3cff;
+}
+
+.check-random label {
+    font-size: 0.85rem;
+}

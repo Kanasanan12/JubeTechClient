@@ -1,0 +1,118 @@
+.course-container {
+    padding: 5px;
+    width: 240px;
+    overflow: hidden;
+    white-space: normal;
+    border-radius: 15px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    background-color: #FFFFFF;
+    border: 1px solid rgb(219, 219, 219);
+    transition: 0.5s all;
+}
+
+.course-container:hover {
+    transform: scale(1.1);
+    transition: 0.5s all;
+}
+
+.course-container .course-content {
+    padding: 20px 10px;
+}
+
+.course-container strong {
+    width: 210px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: "Mitr", sans-serif;
+    font-size: 0.89rem;
+    text-align: justify;
+    font-weight: 600;
+}
+
+.course-content > span {
+    width: 210px;
+    color: #777777;
+    font-size: 0.67rem;
+    text-align: justify;
+}
+
+.course-info {
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.course-container img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.MuiBox-root {
+    font-size: 0.85rem;
+}
+
+.course-info a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.65rem;
+    padding: 5px 15px;
+    color: #FFFFFF;
+    background-color: #A000C8;
+    border-radius: 15px;
+    transition: all 0.5s;
+}
+
+.course-info a:hover{
+    background-color: #ab36c9;
+    transition: all 0.5s;
+}
+
+@media only screen and (max-width:1200px) {
+    .course-container {
+        width: 200px;
+    }
+
+    .course-container .course-content {
+        padding: 10px 5px;
+    }
+
+    .course-container img {
+        height: 130px;
+    }
+
+    div.rating svg {
+        font-size: 13px !important;
+    }
+
+    .course-info a {
+        font-size: 0.51rem;
+    }
+
+    .MuiBox-root.css-1isemmb {
+        font-size: 0.55rem;
+        margin-left: 2px !important;
+    }
+
+    .course-container strong {
+        font-size: 0.7rem;
+    }
+
+    .course-content > span {
+        font-size: 0.5rem;
+    }
+
+    .course-container strong, .course-content > span {
+        width: 160px;
+    }
+}

@@ -1,0 +1,12 @@
+.main-exam-container {
+    padding: 20px;
+}
+
+.main-exam-container p {
+    margin: 0;
+}
+
+.main-exam-container i {
+    user-select: none;
+    pointer-events: none;
+}

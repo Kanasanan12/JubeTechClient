@@ -1,0 +1,36 @@
+.course-list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 80px;
+    padding: 0 60px;
+    margin-bottom: 100px;
+}
+
+.course-list-container h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.swiper {
+    cursor: grab;
+    height: 380px;
+}
+
+.swiper:active {
+    cursor: grabbing;
+}
+
+.course-list {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.swiper-slide {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}

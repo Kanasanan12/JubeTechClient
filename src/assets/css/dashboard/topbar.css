@@ -1,0 +1,108 @@
+.topbar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #c9c8c8;
+    padding-left: 30px;
+    padding-right: 10px;
+}
+
+.avatar-info {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 15px;
+    gap: 10px;
+    border-radius: 5px;
+    border: 1px solid rgb(210, 210, 210);
+    height: 50px;
+}
+
+.avatar-info:hover {
+    background-color: rgb(240, 240, 240);
+}
+
+.avatar-content {
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    justify-content: space-between;
+}
+
+.avatar-content p {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.avatar-content span {
+    text-align: start;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.75rem;
+}
+
+.avatar-info img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.avatar-dropdown {
+    font-size: 0.85rem;
+    top: 75px;
+    right: 40px;
+    position: absolute;
+    background-color: #FFFFFF;
+    border: 1px solid rgb(239, 239, 239);
+    border-radius: 5px;
+    transform: translateX(20px) translateY(-60px);
+    box-shadow: 1px 1px 0px 0px #00000010;
+    pointer-events: none;
+    filter: opacity(0);
+    padding: 10px 15px;
+    z-index: 1;
+    transition: 0.3s all;
+}
+
+.avatar-dropdown ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.avatar-dropdown ul li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 4px 10px;
+    border-radius: 2px;
+}
+
+.avatar-dropdown ul li:hover {
+    background-color: #ededed;
+}
+
+.avatar-dropdown ul li:hover a {
+    color: #323232;
+}
+
+.avatar-dropdown.active-dropdown {
+    pointer-events: all;
+    transform: translateX(10px) translateY(0px);
+    filter: opacity(1);
+    transition: 0.3s all;
+}
+
+.title-dashboard h1 {
+    color: rgb(84, 15, 149);
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+}

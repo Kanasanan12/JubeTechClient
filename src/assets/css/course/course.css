@@ -1,0 +1,32 @@
+.course-manage-container {
+    padding: 10px 15px;
+}
+
+.course-manage-container * {
+    font-family: "Poppins", sans-serif;
+}
+
+.course-manage-container .nav {
+    display: flex;
+    border-bottom: 1px solid rgb(206, 206, 206);
+    gap: 5px;
+}
+
+.course-manage-container .nav .nav-item {
+    font-size: 0.9rem;
+    width: 100px;
+    text-align: center;
+}
+
+.course-manage-container .nav .nav-link {
+    color: #1b1b1b;
+    font-weight: 500;
+}
+
+.course-manage-container .nav .nav-link:hover {
+    color: #572d7e;
+}
+
+.course-manage-container .nav .nav-link.active {
+    color: #7606e0;
+}

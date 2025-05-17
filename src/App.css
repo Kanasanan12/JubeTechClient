@@ -1,0 +1,61 @@
+:root {
+    --purple-logo-primary: #BB2AFF;
+    --pink-logo-primary: #FF24F6;
+    --active-link-purple: #B423F8;
+    --active-link-pink: #DD95FF;
+    --text-black-primary: #20272C;
+    --button-primary: #7001A4;
+    --header-modal-pink: #F097FF;
+    --header-modal-purple: #B007FF;
+    --text-label: #520078;
+}
+
+.btn-close {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='black'><path d='M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z'/></svg>") !important;
+    transform: scale(1.8);
+    box-shadow: none !important;
+}
+
+.swal2-container {
+    pointer-events: none;
+}
+
+.swal2-popup {
+    pointer-events: all;
+}
+
+.preload-web {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    background-color: #FFFFFF;
+}
+
+.dots {
+    width: 13.4px;
+    height: 13.4px;
+    background: #b547ff;
+    color: #ce47ff;
+    border-radius: 50%;
+    box-shadow: 22.4px 0,-22.4px 0;
+    animation: dots-u8fzftmd 1s infinite linear alternate;
+}
+    
+@keyframes dots-u8fzftmd {
+    0% {
+    box-shadow: 22.4px 0,-22.4px 0;
+    }
+
+    33% {
+    box-shadow: 22.4px 0,-22.4px 0 rgba(71,75,255,0.13);
+    background: rgba(71,75,255,0.13);
+    }
+
+    66% {
+    box-shadow: 22.4px 0 rgba(71,75,255,0.13),-22.4px 0;
+    background: rgba(71,75,255,0.13);
+    }
+}
