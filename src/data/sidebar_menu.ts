@@ -71,6 +71,6 @@ export const menus:Menu[] = [
         title: "JubeCodeLab",
         href: "/dashboard/jube-code-lab/",
         icon: FaFileCode,
-        roles: ["Student", "Admin", "Tutor"]
+        roles: ["Tutor"]
     }
 ]
