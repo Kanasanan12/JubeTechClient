@@ -122,13 +122,21 @@ const CourseListingPageContent = () => {
         setLoading(true);
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/course/pagination`, {
           params: {
-            page: page,
-            limit: coursesPerPage,
-            search: searchTerm,
-            rating: filters.rating,
-            level: filters.level,
-            duration: filters.duration,
-            priceRange: filters.priceRange
+            pageSize: coursesPerPage,
+            title: searchTerm,
+            rating: filters.rating || undefined,
+            duration: filters.duration || undefined,
+            level: filters.level || undefined,
+            minPrice: priceRange[0],
+            maxPrice: priceRange[1],
+            // page: page,
+            // pageSize: coursesPerPage,
+            // title: searchTerm,   // เปลี่ยนจาก search เป็น title
+            // rating: filters.rating,
+            // duration: filters.duration,
+            // minPrice: priceRange[0],  // แยก minPrice และ maxPrice
+            // maxPrice: priceRange[1],
+            // level: filters.level,
           }
         });
         console.log("response", response.data.data);
@@ -372,7 +380,7 @@ const CourseListingPageContent = () => {
                 </div>
               </div>
 
-              <div className="filter-group">
+              {/* <div className="filter-group">
                 <h3>ระดับความยาก</h3>
                 <RadioGroup
                   value={filters.level}
@@ -395,7 +403,7 @@ const CourseListingPageContent = () => {
                   <FormControlLabel value="6-17" control={<Radio size="small" />} label="6-17 ชั่วโมง" />
                   <FormControlLabel value="17+" control={<Radio size="small" />} label="17+ ชั่วโมง" />
                 </RadioGroup>
-              </div>
+              </div> */}
 
               <div className="filter-group">
                 <h3>ราคา</h3>
@@ -433,11 +441,11 @@ const CourseListingPageContent = () => {
                       }
                     }}
                   />
-                  <div className="price-range-display">
+                  {/* <div className="price-range-display">
                     <span>฿{priceRange[0]}</span>
                     <span>ถึง</span>
                     <span>฿{priceRange[1]}</span>
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
