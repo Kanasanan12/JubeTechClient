@@ -423,3 +423,32 @@
     flex-direction: column;
   }
 }
+
+/* Certificate button styling */
+.certificate-button-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.certificate-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  width: 100%;
+}
+
+.certificate-button:hover {
+  background-color: #a529d2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}

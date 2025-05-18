@@ -26,6 +26,7 @@ import "@videojs/themes/fantasy/index.css";
 import "../assets/css/learncourse/learn_course.css";
 
 import NotFound from "../assets/img/undraw_not-found_6bgl.png";
+import { getToken } from "../services/authorize";
 
 interface IFCourse {
     _id: string,
@@ -67,7 +68,7 @@ interface IFLesson {
     main_content: string
 }
 
-const VideoComponent = ({ videoContent }:{ videoContent:string }) => {
+const VideoComponent = ({ videoContent, onEnded }: { videoContent: string, onEnded: () => Promise<void> }) => {
     const videoRef = useRef<HTMLVideoElement | null>(null);
 
     useEffect(() => {
@@ -121,6 +122,9 @@ const VideoComponent = ({ videoContent }:{ videoContent:string }) => {
                     const duration = e.currentTarget.duration;
                     console.log("Video duration:", duration);
                 }}
+                onEnded={() => {
+                    if (onEnded) onEnded();
+                }}
                 controls
             />
         </div>
@@ -170,14 +174,69 @@ export default function LearnCourse() {
     const [initialVideo, setInitialVideo] = useState<boolean>(false);
     const [videoContent, setVideoContent] = useState<string>("");
 
+
+    const updateLessonProgress = async () => {
+        try {
+            if (!course_id || !currentLesson._id) return;
+
+     
+            let totalLessons = 0;
+            let completedLessons = 0;
+
+
+            const completedLessonsKey = `course_${course_id}_completed_lessons`;
+            const completedLessonsData = localStorage.getItem(completedLessonsKey);
+            const completedLessonIds = completedLessonsData ? JSON.parse(completedLessonsData) : [];
+
+            if (!completedLessonIds.includes(currentLesson._id)) {
+                completedLessonIds.push(currentLesson._id);
+                localStorage.setItem(completedLessonsKey, JSON.stringify(completedLessonIds));
+            }
+
+     
+            course.section_ids.forEach(section => {
+                totalLessons += section.lesson_ids.length;
+                section.lesson_ids.forEach(lesson => {
+                    if (completedLessonIds.includes(lesson._id)) {
+                        completedLessons++;
+                    }
+                });
+            });
+
+
+            const progressPercentage = Math.round((completedLessons / totalLessons) * 100);
+
+     
+            await axios.put(`${import.meta.env.VITE_API_URL}/enrollments/progress`, {
+                courseId: course_id,
+                progress: progressPercentage
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${getToken()}`
+                }
+            });
+
+            if (progressPercentage >= 100) message.success("The course was learn successfully.");
+
+            console.log(`Progress updated: ${progressPercentage}%`);
+        } catch (error) {
+            console.error("Error updating progress:", error);
+            message.error("Failed to update course progress");
+        }
+    };
+
     // effect
     useEffect(() => {
         if (!course_id) message.error("The course was not found.");
         else {
             const trackauth = onAuthStateChanged(auth, (user) => {
-                if (user) fetchCourse();
+                if (user) {
+                    fetchCourse();
+                    updateLessonProgress();
+                };
             });
-            
+
             return () => trackauth();
         }
     }, []);
@@ -192,10 +251,11 @@ export default function LearnCourse() {
             setInitialVideo(false);
             fetchFile();
         }
+        updateLessonProgress();
     }, [currentLesson]);
 
     // function
-    const fetchCourse = async() => {
+    const fetchCourse = async () => {
         try {
             setIsRender(false);
             const response = await axios.get(`${import.meta.env.VITE_API_URL}/course/learn/${course_id}`);
@@ -235,7 +295,7 @@ export default function LearnCourse() {
         }
     }
 
-    const fetchFile = async() => {
+    const fetchFile = async () => {
         try {
             const newUrl = await fetchFileFromStorage(currentLesson.main_content);
             setVideoContent(newUrl);
@@ -244,7 +304,7 @@ export default function LearnCourse() {
         }
     }
 
-    const handleDownloadPDF = async() => {
+    const handleDownloadPDF = async () => {
         // const element = contentRef.current;
         // if (!element) return;
 
@@ -310,8 +370,8 @@ export default function LearnCourse() {
         try {
             const newUrl = await fetchFileFromStorage(path);
             if (!newUrl) {
-            message.error("The sub file was not found.");
-            return;
+                message.error("The sub file was not found.");
+                return;
             }
             const link = document.createElement("a");
             link.href = newUrl;
@@ -325,7 +385,7 @@ export default function LearnCourse() {
         }
     };
 
-    const ChangeLesson = (lesson_id:string) => {
+    const ChangeLesson = (lesson_id: string) => {
         if (lesson_id) location.href = `/course/learn/${course_id}/lesson/${lesson_id}`;
         else message.error("The lesson was not found.");
     }
@@ -339,12 +399,12 @@ export default function LearnCourse() {
                         <div className="not-found-course">
                             <img src={NotFound} alt="not found" />
                             <span>The course was not found.</span>
-                            <button onClick={() => location.href = "/"}>Back page</button>
+                            <button onClick={() => location.href = "/my-courses"}>Back page</button>
                         </div>
                         :
                         <>
                             <div className="header-course-content">
-                                <button onClick={() => location.href = "/"}>
+                                <button onClick={() => location.href = "/my-courses"}>
                                     <i><BsChevronLeft size={15} /></i>
                                     <span>Back page</span>
                                 </button>
@@ -365,7 +425,7 @@ export default function LearnCourse() {
                                                 {currentLesson.type === "lecture" ?
                                                     <div className="lecture-content">
                                                         <div className="lesson-title">
-                                                            {currentLesson.name.length > 60 ? 
+                                                            {currentLesson.name.length > 60 ?
                                                                 currentLesson.name.slice(0, 60) + "..."
                                                                 :
                                                                 currentLesson.name
@@ -384,7 +444,9 @@ export default function LearnCourse() {
                                                     </div>
                                                     :
                                                     <div className="video-content">
-                                                        <VideoComponent videoContent={videoContent} />
+                                                        <VideoComponent videoContent={videoContent}
+                                                            onEnded={updateLessonProgress}
+                                                        />
                                                     </div>
                                                 }
                                             </>
@@ -447,17 +509,17 @@ export default function LearnCourse() {
                                                                                 className="sub-file-download"
                                                                                 menu={{
                                                                                     items: lesson.sub_file.map((subfile, index) => ({
-                                                                                    key: `${index}`,
-                                                                                    label: (
-                                                                                        <span
-                                                                                            className="subfile-name"
-                                                                                            onClick={() => downloadSubFile(subfile)}
-                                                                                        >
-                                                                                        {subfile.split("_")[2].length > 15
-                                                                                            ? subfile.split("_")[2].slice(0, 15) + "..."
-                                                                                            : subfile.split("_")[2]}
-                                                                                        </span>
-                                                                                    ),
+                                                                                        key: `${index}`,
+                                                                                        label: (
+                                                                                            <span
+                                                                                                className="subfile-name"
+                                                                                                onClick={() => downloadSubFile(subfile)}
+                                                                                            >
+                                                                                                {subfile.split("_")[2].length > 15
+                                                                                                    ? subfile.split("_")[2].slice(0, 15) + "..."
+                                                                                                    : subfile.split("_")[2]}
+                                                                                            </span>
+                                                                                        ),
                                                                                     })),
                                                                                 }}
                                                                             >
@@ -486,7 +548,7 @@ export default function LearnCourse() {
                                     </Space>
                                 </div>
                             </div>
-                            <div id="pdf-clone-container" style={{position:"fixed",left:"-99999px",top:0}}></div>
+                            <div id="pdf-clone-container" style={{ position: "fixed", left: "-99999px", top: 0 }}></div>
                         </>
                     }
                 </div>
